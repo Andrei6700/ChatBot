@@ -1,16 +1,19 @@
+from flask import Flask, request, jsonify
 import json
 from difflib import get_close_matches
 import re
 import math
 
+app = Flask(__name__)
+
 def load_knowledge(file_path: str) -> dict:
-    # Function to load knowledge data from the specified JSON file
+    # Function to load data from json
     with open(file_path, 'r') as file:
         data = json.load(file)
     return data
 
 def save_knowledge(file_path: str, data: dict):
-    # Function to save knowledge data to the specified JSON file
+    # Function to save data to json file
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=2)
 
@@ -56,34 +59,22 @@ def evaluate_math_expression(expression: str) -> str:
     except Exception as e:
         return str(e)
 
-
-def chat_bot():
-    knowledge_data: dict = load_knowledge("knowledge.json")
-
-    while True:
-        user_input: str = input("You: ")
-       
-        if user_input.lower() == "exit":
-            break
-    
-        best_question_match: str | None = find_best_question_match(user_input, [q["question"] for q in knowledge_data["questions"]])
-    
-        if best_question_match:
-            answer: str = get_answer_for_question(best_question_match, knowledge_data)
-            print(f"ChatBot: {answer}")
-        elif is_math_question(user_input):
-            result = evaluate_math_expression(user_input)
-            print(f"ChatBot: {result}")
-        else:
-            print("ChatBot: I don't know the answer to that question. Tell me the answer ")
-            new_answer: str = input("Type the answer or 'skip' to skip: ")
-
-            if new_answer.lower() == "skip":
-                continue
-
-            knowledge_data["questions"].append({"question": user_input, "answers": [new_answer]})
-            save_knowledge("knowledge.json", knowledge_data)
-            print("ChatBot: OK ")
+@app.route('/ask', methods=['POST'])
+def ask_question():
+    user_input = request.json.get('question', '')  # Extrage întrebarea utilizatorului din request
+    knowledge_data = load_knowledge("knowledge.json")  # Încarcă cunoștințele din fișierul JSON
+    best_question_match = find_best_question_match(user_input, [q["question"] for q in knowledge_data["questions"]])
+    response = {}
+    if best_question_match:
+        answer = get_answer_for_question(best_question_match, knowledge_data)
+        response['answer'] = answer
+    elif is_math_question(user_input):
+        result = evaluate_math_expression(user_input)
+        response['answer'] = result
+    else:
+        response['answer'] = "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
+        response['unanswered_question'] = user_input
+    return jsonify(response)  # Returnează răspunsul în format JSON
 
 if __name__ == "__main__":
-    chat_bot()
+    app.run(debug=True)

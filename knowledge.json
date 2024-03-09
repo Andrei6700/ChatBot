@@ -137,6 +137,18 @@
       "answers": [
         "totul bine, am zis ceva gresit ?"
       ]
+    },
+    {
+      "question": "buna seara",
+      "answers": [
+        "Buna seara domnule sau domnisoara, cu ce va pot ajuta in aceasta minunata sera ?"
+      ]
+    },
+    {
+      "question": "merge ?",
+      "answers": [
+        "merge, nu stiu !!! Tu trebuie sa stii :))"
+      ]
     }
   ]
 }
