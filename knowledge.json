@@ -1,0 +1,142 @@
+{
+  "questions": [
+    {
+      "question": "Hello",
+      "answers": [
+        "Hello",
+        "Hi",
+        "Hey"
+      ]
+    },
+    {
+      "question": "salut",
+      "answers": [
+        "Salut"
+      ]
+    },
+    {
+      "question": "Ba ce nebun esti :))) Hai salut",
+      "answers": [
+        "stiu vericule, d-aia sunt si aici :)))"
+      ]
+    },
+    {
+      "question": "ce faci ?",
+      "answers": [
+        "Pai bine, tu ? Cum mai e viata ta :))))"
+      ]
+    },
+    {
+      "question": "neata",
+      "answers": [
+        " salut "
+      ]
+    },
+    {
+      "question": "la fel",
+      "answers": [
+        "ma bucur sa aud asta, trage tot mai tare"
+      ]
+    },
+    {
+      "question": "ok",
+      "answers": [
+        "Daca ai o alta intrebare sunt aici 24/7, putin chinuit dar sunt aici :(("
+      ]
+    },
+    {
+      "question": "What is logistic regression?",
+      "answers": [
+        "Logistic regression is a statistical method for analyzing a dataset in which there are one or more independent variables that determine an outcome. It is used to predict the probability of a binary outcome based on one or more predictor variables.",
+        "Logistic regression is a type of regression analysis used for predicting the probability of a binary outcome based on one or more predictor variables.",
+        "Logistic regression is a classification algorithm used to assign observations to a discrete set of classes."
+      ]
+    },
+    {
+      "question": "Explain the concept of overfitting.",
+      "answers": [
+        "Overfitting occurs when a machine learning model learns the training data too well, capturing noise and random fluctuations in the data rather than the underlying pattern. As a result, the model performs well on the training data but poorly on unseen data.",
+        "Overfitting happens when a model learns the training data too well, capturing noise and random fluctuations instead of the underlying pattern. This leads to poor generalization performance on unseen data.",
+        "Overfitting refers to a situation where a machine learning model learns the training data too well, capturing noise and random variations rather than the underlying pattern, resulting in poor performance on unseen data."
+      ]
+    },
+    {
+      "question": "What is a neural network?",
+      "answers": [
+        "A neural network is a computational model inspired by the structure and functioning of the human brain. It consists of interconnected nodes (neurons) arranged in layers. Each neuron receives input, performs a computation, and passes its output to the next layer. Neural networks are used for tasks such as classification, regression, and pattern recognition.",
+        "A neural network is a computational model composed of interconnected nodes (neurons) that process information. It is inspired by the structure and functioning of the human brain and is used for tasks such as classification, regression, and pattern recognition.",
+        "A neural network is a computational model inspired by the structure and functioning of the human brain. It consists of layers of interconnected nodes (neurons) that process information. Neural networks are used for tasks such as classification, regression, and pattern recognition."
+      ]
+    },
+    {
+      "question": "What is gradient descent?",
+      "answers": [
+        "Gradient descent is an optimization algorithm used to minimize the loss function in machine learning models. It works by iteratively adjusting the parameters of the model in the direction of the steepest descent of the loss function.",
+        "Gradient descent is an optimization algorithm used to minimize the loss function in machine learning models. It works by iteratively adjusting the parameters of the model in the direction that reduces the loss the most.",
+        "Gradient descent is a first-order optimization algorithm used to minimize the loss function in machine learning models. It iteratively adjusts the parameters of the model in the direction of the negative gradient of the loss function."
+      ]
+    },
+    {
+      "question": "What is cross-validation?",
+      "answers": [
+        "Cross-validation is a technique used to assess the performance of a machine learning model. It involves partitioning the dataset into multiple subsets, training the model on a subset of the data, and evaluating it on the remaining subset. This process is repeated multiple times, with different subsets used for training and evaluation each time.",
+        "Cross-validation is a method used to evaluate the performance of a machine learning model. It involves dividing the dataset into multiple subsets, training the model on some of the subsets, and evaluating it on the remaining subsets. This process is repeated several times, with different subsets used for training and evaluation each time.",
+        "Cross-validation is a statistical method used to assess the performance of a machine learning model. It involves dividing the dataset into multiple subsets, training the model on some of the subsets, and evaluating it on the remaining subsets. This process is repeated multiple times to obtain an overall performance estimate."
+      ]
+    },
+    {
+      "question": "Write a Python function to calculate the factorial of a given number.",
+      "answers": [
+        "```python\nimport math\n\ndef factorial(n):\n    return math.factorial(n)\n```"
+      ]
+    },
+    {
+      "question": "Explain the concept of recursion with a code example in any programming language of your choice.",
+      "answers": [
+        "Recursion is a programming technique where a function calls itself to solve a problem. Here's an example of a recursive function in Python to calculate the factorial of a number:\n\n```python\n\ndef factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)\n```"
+      ]
+    },
+    {
+      "question": "Write a JavaScript function to check if a given string is a palindrome.",
+      "answers": [
+        "```javascript\nfunction isPalindrome(str) {\n  return str === str.split('').reverse().join('');\n}\n```"
+      ]
+    },
+    {
+      "question": "Implement a binary search algorithm in Java.",
+      "answers": [
+        "```java\npublic class BinarySearch {\n    public static int binarySearch(int[] arr, int key) {\n        int left = 0;\n        int right = arr.length - 1;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            if (arr[mid] == key) {\n                return mid;\n            }\n            if (arr[mid] < key) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n}\n```"
+      ]
+    },
+    {
+      "question": "Write a SQL query to retrieve the names of employees who have a salary greater than 50000 from an 'employees' table.",
+      "answers": [
+        "```sql\nSELECT name FROM employees WHERE salary > 50000;\n```"
+      ]
+    },
+    {
+      "question": "ooo",
+      "answers": [
+        "OoooooOoooo "
+      ]
+    },
+    {
+      "question": ":))))",
+      "answers": [
+        "Kinda Sus Bro :))))"
+      ]
+    },
+    {
+      "question": "test",
+      "answers": [
+        "test ? nu prea imi place cuvantul a;a"
+      ]
+    },
+    {
+      "question": ":(",
+      "answers": [
+        "totul bine, am zis ceva gresit ?"
+      ]
+    }
+  ]
+}
