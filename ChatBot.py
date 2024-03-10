@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
 from difflib import get_close_matches
 import re
 import math
 
 app = Flask(__name__)
+CORS(app)
 
 def load_knowledge(file_path: str) -> dict:
     # Function to load data from json
@@ -59,10 +61,14 @@ def evaluate_math_expression(expression: str) -> str:
     except Exception as e:
         return str(e)
 
-@app.route('/ask', methods=['POST'])
+@app.route('/ask', methods=['POST', 'GET'])
 def ask_question():
-    user_input = request.json.get('question', '')  # Extrage întrebarea utilizatorului din request
-    knowledge_data = load_knowledge("knowledge.json")  # Încarcă cunoștințele din fișierul JSON
+    if request.method == 'POST':
+        user_input = request.json.get('question', '')  # take the question from the json
+    elif request.method == 'GET':
+        user_input = request.args.get('question', '')  # take the question from the url
+    
+    knowledge_data = load_knowledge("knowledge.json")  # load the knowledge data from the json 
     best_question_match = find_best_question_match(user_input, [q["question"] for q in knowledge_data["questions"]])
     response = {}
     if best_question_match:
@@ -74,7 +80,7 @@ def ask_question():
     else:
         response['answer'] = "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
         response['unanswered_question'] = user_input
-    return jsonify(response)  # Returnează răspunsul în format JSON
+    return jsonify(response)  # return the response in json
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000) # start the server 
