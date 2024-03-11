@@ -1,7 +1,11 @@
 {
   "questions": [
     {
-      "question": "Hello",
+      "question": [
+        "Salut ",
+        "Hi",
+        "hola"
+      ],
       "answers": [
         "Hello",
         "Hi",
@@ -69,7 +73,7 @@
       ]
     },
     {
-      "question": "What is gradient descent?",
+      "question": "intrebarea1",
       "answers": [
         "Gradient descent is an optimization algorithm used to minimize the loss function in machine learning models. It works by iteratively adjusting the parameters of the model in the direction of the steepest descent of the loss function.",
         "Gradient descent is an optimization algorithm used to minimize the loss function in machine learning models. It works by iteratively adjusting the parameters of the model in the direction that reduces the loss the most.",
@@ -117,7 +121,8 @@
     {
       "question": "ooo",
       "answers": [
-        "OoooooOoooo "
+        "OoooooOoooo ",
+        "Oooooooo :)))"
       ]
     },
     {
@@ -129,7 +134,8 @@
     {
       "question": "test",
       "answers": [
-        "test ? nu prea imi place cuvantul a;a"
+        "test ? nu prea imi place cuvantul a;a",
+        "testare ? la ce vrei sa ma testezi ?"
       ]
     },
     {
@@ -147,7 +153,8 @@
     {
       "question": "merge ?",
       "answers": [
-        "merge, nu stiu !!! Tu trebuie sa stii :))"
+        "merge, nu stiu !!! Tu trebuie sa stii :))",
+        "cred ca da :))"
       ]
     },
     {
@@ -160,6 +167,48 @@
       "question": "maine la facultate",
       "answers": [
         "da, maine facultate sau nu mai stiu :))) "
+      ]
+    },
+    {
+      "question": "sa",
+      "answers": [
+        "ooo"
+      ]
+    },
+    {
+      "question": "maine",
+      "answers": [
+        "maine nu stiu ce"
+      ]
+    },
+    {
+      "question": "hammmm",
+      "answers": [
+        "hmmmm ?"
+      ]
+    },
+    {
+      "question": "faculta",
+      "answers": [
+        "sa te lasi de faculta :))"
+      ]
+    },
+    {
+      "question": "Care numele meu ?",
+      "answers": [
+        "Sincer nu iti stiu numele, dar putin ma intereseaza :))"
+      ]
+    },
+    {
+      "question": "C# sau c",
+      "answers": [
+        "JavaScript"
+      ]
+    },
+    {
+      "question": "C# sau c++",
+      "answers": [
+        "JavaScript"
       ]
     }
   ]

@@ -21,8 +21,37 @@ def save_knowledge(file_path: str, data: dict):
 
 def find_best_question_match(user_question: str, questions: list) -> str | None:
     # Function to find the best match for the user's question
-    matches: list = get_close_matches(user_question, questions, n=1, cutoff=0.6)
-    return matches[0] if matches else None
+    best_match = None
+    best_similarity = 0
+    
+    for q in questions:
+        similarity = similarity_score(user_question, q)
+        if similarity > best_similarity:
+            best_similarity = similarity
+            best_match = q
+    
+    return best_match
+
+def similarity_score(str1: str, str2: str) -> float:
+    # Function make similarity 
+    m = len(str1)
+    n = len(str2)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if i == 0:
+                dp[i][j] = j
+            elif j == 0:
+                dp[i][j] = i
+            elif str1[i - 1] == str2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
+    
+    max_length = max(m, n)
+    similarity = 1 - (dp[m][n] / max_length)
+    return similarity
 
 def get_answer_for_question(question:str, knowledge: dict) -> str | None:
     # Function to get the answer for the given question from the knowledge data
