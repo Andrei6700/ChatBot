@@ -4,7 +4,10 @@ import json
 from difflib import get_close_matches
 import re
 import math
+from dotenv import load_dotenv 
+import os 
 
+load_dotenv() 
 app = Flask(__name__)
 CORS(app)
 
@@ -63,6 +66,7 @@ def evaluate_math_expression(expression: str) -> str:
 
 @app.route('/ask', methods=['POST', 'GET'])
 def ask_question():
+    decryption_key = os.environ.get('REACT_APP_DECRYPTION_KEY')  # Accesați cheia de decriptare din variabilele de mediu
     if request.method == 'POST':
         user_input = request.json.get('question', '')  # take the question from the json
     elif request.method == 'GET':
