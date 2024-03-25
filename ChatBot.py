@@ -6,10 +6,13 @@ import re
 import math
 from dotenv import load_dotenv 
 import os 
+from colorama import init, Fore
+from datetime import datetime
 
 load_dotenv() 
 app = Flask(__name__)
 CORS(app)
+init(autoreset=True)
 
 def load_knowledge(file_path: str) -> dict:
     # Function to load data from json
@@ -64,9 +67,13 @@ def evaluate_math_expression(expression: str) -> str:
     except Exception as e:
         return str(e)
 
+def get_current_time() -> str:
+    current_time = datetime.now().strftime("%H:%M:%S")
+    return f"ORA exacta este  {current_time}"
+
 @app.route('/ask', methods=['POST', 'GET'])
 def ask_question():
-    decryption_key = os.environ.get('REACT_APP_DECRYPTION_KEY')  # Accesați cheia de decriptare din variabilele de mediu
+    decryption_key = os.environ.get('REACT_APP_DECRYPTION_KEY') 
     if request.method == 'POST':
         user_input = request.json.get('question', '')  # take the question from the json
     elif request.method == 'GET':
@@ -77,15 +84,17 @@ def ask_question():
     response = {}
     if best_question_match:
         answer = get_answer_for_question(best_question_match, knowledge_data)
-        response['answer'] = answer
+        response['answer'] = Fore.RED + answer
     elif is_math_question(user_input):
         result = evaluate_math_expression(user_input)
-        response['answer'] = result
+        response['answer'] = Fore.GREEN + result
+    elif 'ora' in user_input.lower() and 'cat' in user_input.lower(): # check if the user asked for the current time
+        response['answer'] = Fore.BLUE + get_current_time()
     else:
         response['answer'] = "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
         response['unanswered_question'] = user_input
     return jsonify(response)  # return the response in json
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000) # start the server 
+    app.run(host='0.0.0.0', port=5000, debug=True) # start the server 
 

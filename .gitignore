@@ -2,3 +2,4 @@ __pycache__/
 firebaseConfig.json/
 .env
 tempCodeRunnerFile.py
+serviceAccountKey.json
