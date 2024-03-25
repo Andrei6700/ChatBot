@@ -69,7 +69,11 @@ def evaluate_math_expression(expression: str) -> str:
 
 def get_current_time() -> str:
     current_time = datetime.now().strftime("%H:%M:%S")
-    return f"ORA exacta este  {current_time}"
+    return f" The exact time is {current_time}"
+
+def get_current_date() -> str:
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    return f"The exact date is {current_date}"
 
 @app.route('/ask', methods=['POST', 'GET'])
 def ask_question():
@@ -90,9 +94,11 @@ def ask_question():
         response['answer'] = Fore.GREEN + result
     elif 'ora' in user_input.lower() and 'cat' in user_input.lower(): # check if the user asked for the current time
         response['answer'] = Fore.BLUE + get_current_time()
+    elif 'data' in user_input.lower() and 'cat' in user_input.lower(): # check if the user asked for the current date
+        response['answer'] = Fore.MAGENTA + get_current_date()
     else:
-        response['answer'] = "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
-        response['unanswered_question'] = user_input
+        response['answer'] = Fore.LIGHTYELLOW_EX + "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
+        response['unanswered_question'] = Fore.BLACK + user_input
     return jsonify(response)  # return the response in json
 
 if __name__ == "__main__":
