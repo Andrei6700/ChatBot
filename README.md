@@ -67,6 +67,74 @@ Start
 - answer matemathics basic problems
 
 
+##
+
+```py
+
+    # -----------------0.5-----------------|
+    # pune intrebarea :                    |                            
+    # Tu: saLuT                            |                    
+    # ChatBot: Salut                       |                         
+    # Tu: saut                             |                   
+    # ChatBot: Salut                       |                         
+    # Tu: cae e data                       |                         
+    # ChatBot:  salut                      |                           
+    # Tu: care e data                      |                          
+    # ChatBot:  salut                      |                           
+    # Tu: care e ziua                      |                
+    # ChatBot: Sincer nu iti stiu numele,..|
+    # -------------------------------------|
+    # -----------------0.6-----------------|
+    # Tu: salt                             |                         
+    # ChatBot: Salut                       |                                 
+    # Tu: saul                             |
+    # ChatBot: Salut                       |
+    # Tu: data                             |
+    # ChatBot:  salut                      |
+    # Tu: care e dati                      |
+    # ChatBot: I don't know the answer to..|
+    # ChatBot: Te rog să-mi spui răspunsu..|
+    # Tu: skip                             |
+    # Tu: ce zi e azi ?                    |
+    # ChatBot: Pai bine, tu ? Cum mai e v..|
+    # -------------------------------------|
+    # -----------------0.7-----------------| 
+    # Tu: salyt                            |
+    # ChatBot: Salut                       |
+    # Tu: sult                             |
+    # ChatBot: I don't know the answer ... |
+    # Tu: skip                             |
+    # Tu: data                             |
+    # ChatBot: I don't know the answer ... |
+    # ChatBot: Te rog să-mi spui răspun... |
+    # Tu:                                  |
+    # -------------------------------------| 
+    # -----------------0.8-----------------| 
+    # Tu: salyt                            |
+    # ChatBot: Salut                       |
+    # Tu: sult                             |
+    # ChatBot: I don't know the answer ... |
+    # Tu: skip                             |
+    # Tu: data                             |
+    # ChatBot: I don't know the answer ... |
+    # ChatBot: Te rog să-mi spui răspun... |
+    # Tu:                                  |
+    # -------------------------------------| 
+    # -----------------0.9-----------------| 
+    # Tu: saut                             |       
+    # ChatBot: I don't know the answer t...|
+    # ChatBot: Te rog să-mi spui răspuns...|
+    # Tu: skip                             |    
+    # Tu: salut                            |     
+    # ChatBot: Salut                       | 
+    # Tu: buna sala                        |
+    # ChatBot: I don't know the answer t...|
+    # ChatBot: Te rog să-mi spui răspuns...|
+    # Tu:
+    # -------------------------------------|
+
+```
+
 ## Documentation
 
 [Documentation](https://realpython.com/python-ai-neural-network/)

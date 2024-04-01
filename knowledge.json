@@ -1,17 +1,9 @@
 {
   "questions": [
-    {
-      "question": [
-        "Salut ",
-        "Hi",
-        "hola"
-      ],
-      "answers": [
-        "Hello",
-        "Hi",
-        "Hey"
-      ]
-    },
+      {
+          "question": ["Salut", "Hello"],
+          "answers": ["Salut", "Hello"]
+        },
     {
       "question": "salut",
       "answers": [
@@ -170,12 +162,6 @@
       ]
     },
     {
-      "question": "sa",
-      "answers": [
-        "ooo"
-      ]
-    },
-    {
       "question": "maine",
       "answers": [
         "maine nu stiu ce"
@@ -201,12 +187,6 @@
     },
     {
       "question": "C# sau c",
-      "answers": [
-        "JavaScript"
-      ]
-    },
-    {
-      "question": "C# sau c++",
       "answers": [
         "JavaScript"
       ]
