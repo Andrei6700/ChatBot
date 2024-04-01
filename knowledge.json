@@ -1,9 +1,15 @@
 {
   "questions": [
-      {
-          "question": ["Salut", "Hello"],
-          "answers": ["Salut", "Hello"]
-        },
+    {
+      "question": [
+        "Salut",
+        "Hello"
+      ],
+      "answers": [
+        "Salut",
+        "Hello"
+      ]
+    },
     {
       "question": "salut",
       "answers": [
@@ -195,6 +201,12 @@
       "question": "cum e vremea ?",
       "answers": [
         "nu stiu, uita-te pe geam sau afara, ca d-aia ai ochii"
+      ]
+    },
+    {
+      "question": "\u001b[30mstii raspunsul la intrebare ?",
+      "answers": [
+        "nu il stiu, poti sa mi-l dai ?"
       ]
     }
   ]

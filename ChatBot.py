@@ -114,9 +114,9 @@ def ask_question():
     elif 'ora' in user_input.lower() and 'cat' in user_input.lower(): # check if the user asked for the current time
         response['answer'] = Fore.BLUE + get_current_time()
 
-    elif ('data' in user_input.lower() or 'ziua' in user_input.lower() or 'zi' in user_input.lower()) and ('in cat ' in user_input.lower() or 'oare' in user_input.lower()): 
-        response['answer'] = Fore.MAGENTA + get_current_date()
-
+    elif 'data' in user_input.lower() or 'zi' in user_input.lower():
+            response['answer'] = Fore.MAGENTA + get_current_date()
+    
     else:
         response['answer'] = Fore.LIGHTYELLOW_EX + "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
         response['unanswered_question'] = Fore.BLACK + user_input

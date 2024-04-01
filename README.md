@@ -65,9 +65,22 @@ Start
 - Learn from you
 - Answer your question
 - answer matemathics basic problems
+- to answer questions about the time
+- answer questions about the date
+- answer questions about the weather in the given city
 
 
-##
+## Examples for setting the cutoff
+
+    I made some settings to be able to set a cutoff. The *cutoff* parameter ,is used to find close matches to a given string in a list of strings.
+
+
+  The higher the cutoff value `(>0.6)`, the tighter the matches will beand if the word is not exactly as it is in the .json file it willnot know the answer.
+
+  But the lower the value is `below 0.6`, the cuttof will have problemsfinding certain words and confusing them with other words that arestored.
+
+  `The conclusion` I have drawn about the value to set for the cutoff is `0.6` where it represents a balance in string matching.
+
 
 ```py
 
@@ -86,7 +99,7 @@ Start
     # -------------------------------------|
     # -----------------0.6-----------------|
     # Tu: salt                             |                         
-    # ChatBot: Salut                       |                                 
+    # ChatBot:Salut                        |                          
     # Tu: saul                             |
     # ChatBot: Salut                       |
     # Tu: data                             |
@@ -130,17 +143,36 @@ Start
     # Tu: buna sala                        |
     # ChatBot: I don't know the answer t...|
     # ChatBot: Te rog să-mi spui răspuns...|
-    # Tu:
+    # Tu:                                  |
     # -------------------------------------|
 
 ```
 
-## Documentation
+## Library
 
-[Documentation](https://realpython.com/python-ai-neural-network/)
-[Documentation](https://www.create-learn.us/blog/how-to-make-ai-in-python-tutorial/)
-
+| Library   | Usage                                                                                      |
+| --------  | ------------------------------------------------------------------------------------------ |
+| Flask     | Used to handle incoming requests from customers.                                           |
+| flask_cors| Used to enable inter-domain communication (CORS) between the test-API.py Flask server.     |
+| json      |  Used to work with data in a .JSON file, loading and saving data.                          |
+| difflib   |      Used to find closest matches between strings.                                         |
+| re        |   Used to work with regular expressions, such as searching and replacing templates in text.|
+| math      |   Used to perform mathematical operations.                                                 |
+| dotenv    |  Used to load environment variables from an .env file into your application.               |
+| os        |     Used to access the decryption key from another file.                                   |
+| colorama  |    Used to color text in the terminal.                                                     |
+| datetime  | Used to get the current date and time.                                                     |
+| requests  |  Used to make HTTP requests to other servers to get weather data from the API.             |
+---
 
 ## Screenshots
-
 ![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+
+
+## Documentation
+- https://realpython.com/python-ai-neural-network/
+- https://www.create-learn.us/blog/how-to-make-ai-in-python-tutorial/
+- https://www.geeksforgeeks.org/python-find-current-weather-of-any-city-using-openweathermap-api/
