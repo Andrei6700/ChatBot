@@ -208,6 +208,30 @@
       "answers": [
         "nu il stiu, poti sa mi-l dai ?"
       ]
+    },
+    {
+      "question": "\u001b[30mrau",
+      "answers": [
+        "rau si eu"
+      ]
+    },
+    {
+      "question": "\u001b[30mrau",
+      "answers": [
+        "facultate"
+      ]
+    },
+    {
+      "question": "\u001b[30mSALUT",
+      "answers": [
+        "exit"
+      ]
+    },
+    {
+      "question": "\u001b[30mde ce ?",
+      "answers": [
+        "pai trebuie "
+      ]
     }
   ]
 }

@@ -9,11 +9,18 @@ import os
 from colorama import init, Fore
 from datetime import datetime
 import requests
+from google.cloud import firestore
+import google.auth.exceptions
 
 load_dotenv() 
 app = Flask(__name__)
 CORS(app)
 init(autoreset=True)
+
+try:
+    db = firestore.Client.from_service_account_json('./serviceAccountKey.json')
+except google.auth.exceptions.DefaultCredentialsError:
+    print("Failed to initialize Firestore. Please check your credentials.")
 
 def load_knowledge(file_path: str) -> dict:
     # Function to load data from json
@@ -33,7 +40,7 @@ def find_best_question_match(user_question: str, questions: list) -> str | None:
 
 def get_answer_for_question(question:str, knowledge: dict) -> str | None:
     # Function to get the answer for the given question from the knowledge data
-     for q in knowledge["questions"]:
+    for q in knowledge["questions"]:
         if q["question"] == question:
             return q["answers"][0] 
 
@@ -91,13 +98,14 @@ def get_weather(city):
 
 @app.route('/ask', methods=['POST', 'GET'])
 def ask_question():
-
     decryption_key = os.environ.get('REACT_APP_DECRYPTION_KEY') 
     if request.method == 'POST':
         user_input = request.json.get('question', '')  # take the question from the json
+        print(f"Received POST request with question: {user_input}")  # Print received question
 
     elif request.method == 'GET':
         user_input = request.args.get('question', '')  # take the question from the url
+        print(f"Received GET request with question: {user_input}")  # Print received question
     
     knowledge_data = load_knowledge("knowledge.json")  # load the knowledge data from the json 
     best_question_match = find_best_question_match(user_input, [q["question"] for q in knowledge_data["questions"]])
@@ -105,40 +113,44 @@ def ask_question():
 
     if best_question_match:
         answer = get_answer_for_question(best_question_match, knowledge_data)
-        response['answer'] = Fore.RED + answer
+        response['answer'] = answer  # Removed color formatting
 
     elif is_math_question(user_input):
         result = evaluate_math_expression(user_input)
-        response['answer'] = Fore.GREEN + result
+        response['answer'] = result  # Removed color formatting
 
     elif 'ora' in user_input.lower() and 'cat' in user_input.lower(): # check if the user asked for the current time
-        response['answer'] = Fore.BLUE + get_current_time()
+        response['answer'] = get_current_time()  # Removed color formatting
 
     elif 'data' in user_input.lower() or 'zi' in user_input.lower():
-            response['answer'] = Fore.MAGENTA + get_current_date()
+        response['answer'] = get_current_date()  # Removed color formatting
     
     else:
-        response['answer'] = Fore.LIGHTYELLOW_EX + "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
-        response['unanswered_question'] = Fore.BLACK + user_input
+        response['answer'] = "I don't know the answer to that question. Tell me the answer or 'skip' the answer"
+        response['unanswered_question'] = user_input
 
     if 'vreme' in user_input.lower() or 'meteo' in user_input.lower():
-        # in case the user's request involves the weather, extract the city, it it s specified
         city = 'sibiu'  # Setăm un oraș implicit
-        # check if the user specified a city in the question
-        # if not, we will use the default city sibiu
         if 'in' in user_input.lower():
-            #take the city from the user , using a string between 'in' and 'pe'
             city = user_input.lower().split('in')[1].split('pe')[0].strip()
         elif 'pe' in user_input.lower():
-            # take the city using a string after 'pe'
             city = user_input.lower().split('pe')[1].strip()
 
-        # take the meteo
         weather_response = get_weather(city)
-        response['answer'] = Fore.YELLOW + weather_response
-        
+        response['answer'] = weather_response  # Removed color formatting
+    
+        doc_ref = db.collection('chats').document('sdTbZ4cjf5ZZ37jZm5B8eeUsLSf2J8nBAAJBMsdpcWDglc1GD8GiMZO2')
+        try:
+            doc_ref.set({
+                'messages': response['answer']
+            })
+            print("Message sent to Firestore successfully!")
+        except Exception as e:
+            print("Failed to send message to Firestore:", str(e))
+
+    print(f"Sending response: {response}")  # Print response before returning
+
     return jsonify(response)  # return the response in json
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True) # start the server 
-
